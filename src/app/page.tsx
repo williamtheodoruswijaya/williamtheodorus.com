@@ -1,4 +1,3 @@
-import Spline from '@splinetool/react-spline/next';
 import {Header} from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 

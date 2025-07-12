@@ -3,14 +3,15 @@
 import Spline from '@splinetool/react-spline';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import type { Application } from '@splinetool/runtime';
 
 type SlimeProps = {
-    onLoad?: (splineApp: any) => void;
+    onLoad?: (splineApp: Application) => void;
 };
 
 export const Slime = ({ onLoad }: SlimeProps) => {
     const [isLoaded, setIsLoaded] = useState(false);
-    const handleLoad = (splineApp: any) => {
+    const handleLoad = (splineApp: Application) => {
         setIsLoaded(true);
         onLoad?.(splineApp); // fire parent callback
     };
