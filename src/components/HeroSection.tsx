@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Typewriter from 'typewriter-effect';
 import { motion } from "framer-motion";
 import {useCallback, useState} from "react";
+import GithubContribution from "@/components/GithubContribution";
 
 const Slime = dynamic(() => import('@/components/Slime').then(mod => mod.Slime), {
     ssr: false,
@@ -69,8 +70,10 @@ const HeroSection = () => {
                     a passionate{' '}
                     <i className="font-bold">Data Scientist</i>
                     {' '}and{' '}
-                    <i className="font-bold">Software Engineer.</i>
+                    <i className="font-bold">Software Engineer</i>
+                    {' '}with a strong interest in turning data into meaningful insights and building impactful, scalable software solutions.
                 </motion.p>
+                <GithubContribution/>
             </div>
 
             {/* Right Section */}

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {FiGithub, FiLinkedin, FiMenu, FiX} from "react-icons/fi";
 import { FaDiscord } from "react-icons/fa";
 import {useState} from "react";
+import Image from "next/image";
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,14 @@ export const Header = () => {
                         duration: 1.2 }}
                     className={"flex items-center"}>
                     <div className={"h-10 w-10 rounded-xl bg-gradient-to-r from-gray-500 to-gray-100 flex items-center justify-center text-blue-600 font-bold text-xl mr-3"}>
-                        W
+                        <Image
+                            src={"/assets/app-icon.jpeg"}
+                            width={500}
+                            height={500}
+                            alt={"W"}
+                            objectFit="cover"
+                            className={"rounded-lg"}
+                        />
                     </div>
                     <span className={"text-xl font-bold bg-gradient-to-r from-gray-300 to-gray-100 bg-clip-text text-transparent"}>
                         William Theodorus
