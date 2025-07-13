@@ -14,7 +14,7 @@ export default function GithubContribution() {
                     colorScheme="dark"
                     username="williamtheodoruswijaya"
                     theme={{
-                        dark: ["#2a4868", "#3bfff8", "#3bb4ff", "#3b5cff", "#FCFEFD"],
+                        dark: ["#2a4868", "#5b98dc", "#3bb4ff", "#3bfff8", "#66EAFFFF"],
                     }}
                     blockSize={9}
                     fontSize={10}
