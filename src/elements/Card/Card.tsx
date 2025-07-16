@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { ProjectType } from '@/constant/projects/interface';
 import { FiGithub } from "react-icons/fi";
-import { FaSpeakerDeck } from "react-icons/fa";
+import { FaSpeakerDeck, FaResearchgate } from "react-icons/fa";
 import { MdComputer } from "react-icons/md";
 
 const GetLinkIcon = ({ name }: { name: string }) => {
@@ -16,6 +16,11 @@ const GetLinkIcon = ({ name }: { name: string }) => {
         return (
             <FiGithub />
         );
+    }
+    if (lowerCaseName.includes('paper')) {
+        return (
+            <FaResearchgate/>
+        )
     }
     return (
         <MdComputer/>
@@ -52,10 +57,10 @@ const ProjectCard = ({
                         />
                     </div>
                 )}
-                <h2 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-1 hover:text-sky-300 transition-colors">{name}</h2>
+                <h2 className="text-2xl font-bold text-white mt-4 mb-1 hover:text-sky-300 transition-colors">{name}</h2>
             </a>
 
-            <p className="text-neutral-300 text-sm md:text-base">{description}</p>
+            <p className="text-neutral-300 text-sm md:text-base line-clamp-4">{description}</p>
 
             <div className="flex-grow"></div>
 
