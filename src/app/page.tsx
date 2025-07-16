@@ -1,14 +1,14 @@
 import {Header} from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
+import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
 
 export default function Home() {
     return (
         <main>
             <div className={"w-screen h-screen"}>
                 <Header/>
-                <HeroSection/>
-                <AboutSection/>
+                <Hero/>
+                <Projects/>
             </div>
         </main>
     );

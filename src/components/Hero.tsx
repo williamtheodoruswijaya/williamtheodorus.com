@@ -10,7 +10,7 @@ const Slime = dynamic(() => import('@/components/Slime').then(mod => mod.Slime),
     ssr: false,
 });
 
-const HeroSection = () => {
+const Hero = () => {
     const [loading, setLoading] = useState(true);
     const handleSplineLoad = useCallback(() => {
         setLoading(false);
@@ -82,4 +82,4 @@ const HeroSection = () => {
     );
 };
 
-export default HeroSection;
+export default Hero;
