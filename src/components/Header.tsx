@@ -12,11 +12,16 @@ export const Header = () => {
     const [contactFormOpen, setContactFormOpen] = useState(false);
     const openContactForm = () => setContactFormOpen(true);
     const closeContactForm = () => setContactFormOpen(false);
+    const navItems = [
+        {name: 'Home', link: '#home' },
+        {name: 'Projects', link: '#projects'},
+        {name: 'Experience', link: '#experiences' },
+        {name: 'Contact', link: '#contact' },
+    ]
     return (
         <header className={"absolute w-full z-50 transition-all duration-300"}>
             <div className={"container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20"}>
 
-                {/* Logo */}
                 <motion.div
                     initial={{opacity: 0, x: -100}}
                     animate={{opacity: 1, x: 0}}
@@ -42,12 +47,11 @@ export const Header = () => {
                     </span>
                 </motion.div>
 
-                {/* Desktop Navigation */}
                 <nav className={"lg:flex hidden space-x-8"}>
-                    {["Home", "Projects", "Experience", "Contact"].map((item, index) => (
+                    {navItems.map((item, index) => (
                         <motion.a
-                            key={item}
-                            href={"#"}
+                            key={index}
+                            href={item.link}
                             initial={{opacity: 0, y: -20 }}
                             animate={{opacity: 1, y: 0 }}
                             transition={{
@@ -57,13 +61,12 @@ export const Header = () => {
                                 delay: 0.7 + index * 0.2
                             }}
                             className={"relative text-gray-800 dark:text-gray-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-medium transition-colors duration-300 group"}>
-                            {item}
+                            {item.name}
                             <span className={"absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-200 group-hover:w-full transition-all duration-300"}></span>
                         </motion.a>
                     ))}
                 </nav>
 
-                {/* Social icons - Dekstop */}
                 <div className={"md:flex hidden items-center space-x-4"}>
                     <motion.a
                         initial={{opacity: 0, scale: 0.5 }}
@@ -87,7 +90,6 @@ export const Header = () => {
                         <FaDiscord className={"w-5 h-5"}/>
                     </motion.a>
 
-                    {/* Contact Button */}
                     <motion.button
                         onClick={openContactForm}
                         initial={{opacity: 0, scale: 0.8 }}
@@ -104,7 +106,6 @@ export const Header = () => {
                     </motion.button>
                 </div>
 
-                { /* Mobile Menu Button */}
                 <div className={"md:hidden flex items-center"}>
                     <motion.button
                         whileTap={{ scale: 0.7 }}
@@ -115,27 +116,26 @@ export const Header = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
             <motion.div
                 initial={{opacity: 0, height: 0}}
                 animate={{ opacity: isOpen ? 1:0, height: isOpen ? "auto":0}}
                 transition={{duration:0.5}}
                 className={"md:hidden overflow-hidden bg-white dark:bg-gray-900 shadow-lg px-4 py-5 space-y-5"}>
                 <nav className={"flex flex-col space-y-3"}>
-                    {["Home", "Projects", "Experience", "Contact"].map((item) => (
-                        <a onClick={toggleMenu} className={"text-gray-300 font-medium py-2"} key={item} href={"#"}>
-                            {item}
+                    {navItems.map((item, index) => (
+                        <a onClick={toggleMenu} className={"text-gray-300 font-medium py-2"} key={index} href={item.link}>
+                            {item.name}
                         </a>
                     ))}
                 </nav>
 
                 <div className={"pt-4 border-t border-gray-200 dark:border-gray-700"}>
                     <div className={"flex space-x-5"}>
-                        <a href={"#"}>
+                        <a href={"https://github.com/williamtheodoruswijaya"}>
                             <FiGithub className={"h-5 w-5 text-gray-300"}/>
-                        </a><a href={"#"}>
+                        </a><a href={"https://www.linkedin.com/in/williamtheodoruswijaya/"}>
                             <FiLinkedin className={"h-5 w-5 text-gray-300"}/>
-                        </a><a href={"#"}>
+                        </a><a href={"https://discordapp.com/users/689657830273187943"}>
                             <FaDiscord className={"h-5 w-5 text-gray-300"}/>
                         </a>
                     </div>
@@ -150,7 +150,6 @@ export const Header = () => {
                 </div>
             </motion.div>
 
-            {/* Contact Form */}
             <AnimatePresence>
                 {contactFormOpen && (
                     <motion.div
@@ -178,7 +177,6 @@ export const Header = () => {
                                 </button>
                             </div>
 
-                            {/* Input Form */ }
                             <form className={"space-y-4"}>
                                 <div>
                                     <label htmlFor={"name"} className={"block text-sm font-medium text-gray-300 mb-1"}>

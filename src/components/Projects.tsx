@@ -1,6 +1,6 @@
 "use client";
 
-import ProjectCard from "../elements/Card/Card";
+import { ProjectCard } from "@/elements/Card/Card";
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import PROJECTS from '../constant/projects/index';
@@ -41,7 +41,7 @@ const Projects = () => {
     };
 
     return (
-        <div id="projects" className="relative flex flex-col items-center justify-center gap-6 z-10 py-20 md:py-40 overflow-hidden bg-gradient-to-b from-black to-sky-800">
+        <div id="projects" className="relative flex flex-col items-center justify-center gap-6 z-10 py-20 md:py-40 overflow-hidden bg-gradient-to-b from-sky-800 to-black">
             <div className="absolute top-1/4 left-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl -translate-x-1/2 -z-10"></div>
             <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl translate-x-1/2 -z-10"></div>
 
