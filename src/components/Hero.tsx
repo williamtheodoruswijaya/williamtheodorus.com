@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 import Typewriter from 'typewriter-effect';
 import { motion } from "framer-motion";
 import {useCallback, useState} from "react";
-import GithubContribution from "@/components/GithubContribution";
 
 const Slime = dynamic(() => import('@/components/Slime').then(mod => mod.Slime), {
     ssr: false,
@@ -17,7 +16,6 @@ const Hero = () => {
     }, []);
     return (
         <section className={"h-screen bg-gradient-to-b from-sky-600 to-black flex xl:flex-row flex-col-reverse items-center justify-between lg:px-24 px-4 relative overflow-hidden"}>
-            {/* Fullscreen Loader */}
             {loading && (
                 <motion.div
                     className="fixed inset-0 z-[999] bg-black flex items-center justify-center"
@@ -73,7 +71,6 @@ const Hero = () => {
                     <i className="font-bold">Software Engineer</i>
                     {' '}with a strong interest in turning data into meaningful insights and building impactful, scalable software solutions.
                 </motion.p>
-                <GithubContribution/>
             </div>
 
             {/* Right Section */}

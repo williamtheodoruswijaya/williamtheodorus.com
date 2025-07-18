@@ -5,6 +5,7 @@ import {FiGithub, FiLinkedin, FiMenu, FiX} from "react-icons/fi";
 import { FaDiscord } from "react-icons/fa";
 import {useState} from "react";
 import Image from "next/image";
+import { Link as ScrollLink } from "react-scroll";
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,15 +14,14 @@ export const Header = () => {
     const openContactForm = () => setContactFormOpen(true);
     const closeContactForm = () => setContactFormOpen(false);
     const navItems = [
-        {name: 'Home', link: '#home' },
-        {name: 'Projects', link: '#projects'},
-        {name: 'Experience', link: '#experiences' },
-        {name: 'Contact', link: '#contact' },
+        {name: 'Home', link: 'home' },
+        {name: 'Experience', link: 'experiences' },
+        {name: 'Projects', link: 'projects'},
+        {name: 'Contact', link: 'contact' },
     ]
     return (
         <header className={"absolute w-full z-50 transition-all duration-300"}>
             <div className={"container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20"}>
-
                 <motion.div
                     initial={{opacity: 0, x: -100}}
                     animate={{opacity: 1, x: 0}}
@@ -49,9 +49,8 @@ export const Header = () => {
 
                 <nav className={"lg:flex hidden space-x-8"}>
                     {navItems.map((item, index) => (
-                        <motion.a
+                        <motion.div
                             key={index}
-                            href={item.link}
                             initial={{opacity: 0, y: -20 }}
                             animate={{opacity: 1, y: 0 }}
                             transition={{
@@ -60,10 +59,20 @@ export const Header = () => {
                                 damping: 20,
                                 delay: 0.7 + index * 0.2
                             }}
-                            className={"relative text-gray-800 dark:text-gray-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-medium transition-colors duration-300 group"}>
-                            {item.name}
-                            <span className={"absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-200 group-hover:w-full transition-all duration-300"}></span>
-                        </motion.a>
+                        >
+                            <ScrollLink
+                                activeClass={"active-link"}
+                                to={item.link}
+                                spy={true}
+                                smooth={true}
+                                offset={-80}
+                                duration={500}
+                                className={"relative text-gray-800 dark:text-gray-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-medium transition-colors duration-300 group cursor-pointer"}
+                            >
+                                {item.name}
+                                <span className={"absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-200 group-hover:w-full transition-all duration-300"}></span>
+                            </ScrollLink>
+                        </motion.div>
                     ))}
                 </nav>
 
@@ -72,21 +81,21 @@ export const Header = () => {
                         initial={{opacity: 0, scale: 0.5 }}
                         animate={{opacity: 1, scale: 1 }}
                         transition={{delay: 1.3, duration: 0.8 }}
-                        className={"text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300"} href={"#"}>
+                        className={"text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300"} href={"https://github.com/williamtheodoruswijaya"}>
                         <FiGithub className={"w-5 h-5"}/>
                     </motion.a>
                     <motion.a
                         initial={{opacity: 0, scale: 0.5 }}
                         animate={{opacity: 1, scale: 1 }}
                         transition={{delay: 1.3, duration: 0.8 }}
-                        className={"text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300"} href={"#"}>
+                        className={"text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300"} href={"https://www.linkedin.com/in/williamtheodoruswijaya/"}>
                         <FiLinkedin className={"w-5 h-5"}/>
                     </motion.a>
                     <motion.a
                         initial={{opacity: 0, scale: 0.5 }}
                         animate={{opacity: 1, scale: 1 }}
                         transition={{delay: 1.3, duration: 0.8 }}
-                        className={"text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300"} href={"#"}>
+                        className={"text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300"} href={"https://discordapp.com/users/689657830273187943"}>
                         <FaDiscord className={"w-5 h-5"}/>
                     </motion.a>
 
@@ -123,9 +132,17 @@ export const Header = () => {
                 className={"md:hidden overflow-hidden bg-white dark:bg-gray-900 shadow-lg px-4 py-5 space-y-5"}>
                 <nav className={"flex flex-col space-y-3"}>
                     {navItems.map((item, index) => (
-                        <a onClick={toggleMenu} className={"text-gray-300 font-medium py-2"} key={index} href={item.link}>
+                        <ScrollLink
+                            key={index}
+                            to={item.link}
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                            onClick={toggleMenu}
+                            className={"text-gray-300 font-medium py-2 cursor-pointer"}>
                             {item.name}
-                        </a>
+                        </ScrollLink>
                     ))}
                 </nav>
 

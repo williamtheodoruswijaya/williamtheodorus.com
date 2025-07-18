@@ -29,10 +29,7 @@ const Experiences = () => {
     };
 
     return (
-        <div id="experiences" className="relative flex flex-col items-center justify-center gap-6 z-10 py-20 md:py-40 overflow-hidden bg-gradient-to-b from-black to-sky-800">
-            <div className="absolute top-1/4 left-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl -translate-x-1/2 -z-10"></div>
-            <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl translate-x-1/2 -z-10"></div>
-
+        <section id="experiences" className="flex flex-col items-center justify-center gap-6 z-10 py-20 md:py-40">
             <motion.h1 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#9BF6FF] to-[#95F9C3]">
                 My Experiences
             </motion.h1>
@@ -45,7 +42,6 @@ const Experiences = () => {
                 <AnimatePresence>
                     {EXPERIENCES.slice(0, visibleCount).map((experience) => (
                         <motion.div key={experience.name} variants={itemVariants} layout>
-                            {/* Menggunakan ExperienceCard di sini */}
                             <ExperienceCard {...experience} />
                         </motion.div>
                     ))}
@@ -63,7 +59,7 @@ const Experiences = () => {
                     Load More
                 </motion.button>
             )}
-        </div>
+        </section>
     );
 };
 
