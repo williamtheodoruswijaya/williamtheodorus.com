@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Typewriter from 'typewriter-effect';
 import { motion } from "framer-motion";
 import {useCallback, useState} from "react";
+import {Loader} from "@/elements/Loader/Loader";
 
 const Slime = dynamic(() => import('@/components/Slime').then(mod => mod.Slime), {
     ssr: false,
@@ -23,10 +24,7 @@ const Hero = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                 >
-                    <div className="flex flex-col items-center gap-4">
-                        <div className="w-12 h-12 border-4 border-t-transparent border-white rounded-full animate-spin" />
-                        <p className="text-white font-semibold text-lg">Loading 3D...</p>
-                    </div>
+                    <Loader/>
                 </motion.div>
             )}
 
@@ -73,7 +71,6 @@ const Hero = () => {
                 </motion.p>
             </div>
 
-            {/* Right Section */}
             <Slime onLoad={handleSplineLoad}/>
         </section>
     );

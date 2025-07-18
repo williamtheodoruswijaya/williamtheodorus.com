@@ -3,7 +3,8 @@ import Experiences from "@/components/Experiences"; // Adjust path if needed
 import Projects from "@/components/Projects";
 import {Header} from "@/components/Header";
 import Contact from "@/components/Contact";
-import About from "@/components/About"; // Adjust path if needed
+import About from "@/components/About";
+import {Footer} from "@/components/Footer"; // Adjust path if needed
 
 const Home = () => {
     return (
@@ -19,6 +20,7 @@ const Home = () => {
                     <Experiences/>
                     <Projects/>
                     <Contact/>
+                    <Footer/>
                 </div>
             </div>
         </main>

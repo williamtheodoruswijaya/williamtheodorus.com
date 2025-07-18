@@ -60,12 +60,17 @@ const About = () => {
                     viewport={{ once: true }}
                     className="max-w-2xl text-center lg:text-left"
                 >
-                    <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
-                        Hello! I&apos;m William, a developer based in Indonesia with a deep passion for both the analytical world of Data Science and the creative challenges of Software Engineering. My journey in tech is driven by the thrill of transforming complex data into understandable stories and building applications that are both functional and delightful to use.
-                    </p>
-                    <p className="text-gray-300 text-lg md:text-xl mt-4 leading-relaxed">
-                        Outside of coding, I enjoy exploring new technologies, contributing to open-source projects, and collaborating with others to bring innovative ideas to life.
-                    </p>
+                    <div className="text-gray-300 text-lg md:text-xl leading-relaxed text-justify">
+                        <p>
+                            Hello! I&apos;m William,
+                        </p>
+                        <p>
+                            A developer based in Indonesia with a deep passion for both the analytical world of Data Science and the creative challenges of Software Engineering. My journey in tech is driven by the thrill of transforming complex data into understandable stories and building applications that are both functional and delightful to use.
+                        </p>
+                        <p>
+                            Outside of coding, I enjoy exploring new technologies and collaborating with others to bring innovative ideas to life.
+                        </p>
+                    </div>
                 </motion.div>
             </div>
 

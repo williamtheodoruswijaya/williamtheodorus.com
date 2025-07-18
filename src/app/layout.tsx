@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "William Theodorus | Personal Website",
   description: "William's Website Portfolio",
   icons: {
-    icon: "/icon.jpeg"
+    icon: "/icon.png"
   }
 };
 
