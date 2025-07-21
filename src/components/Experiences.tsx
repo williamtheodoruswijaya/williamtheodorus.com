@@ -41,7 +41,7 @@ const Experiences = () => {
                 className="grid grid-cols-1 gap-[40px] z-10 mt-8 w-full px-4 md:px-0 md:max-w-[700px]"
             >
                 <AnimatePresence>
-                    {EXPERIENCES.slice(0, visibleCount).map((experience) => (
+                    {EXPERIENCES.slice().reverse().slice(0, visibleCount).map((experience) => (
                         <motion.div key={experience.name} variants={itemVariants} layout initial="hidden" whileInView="visible" viewport={{ once: true }}>
                             <ExperienceCard {...experience} />
                         </motion.div>

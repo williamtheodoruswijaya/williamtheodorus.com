@@ -114,7 +114,7 @@ const ExperienceCard = ({
                         alt={name}
                         fill
                         priority
-                        className="object-cover object-center"
+                        className="object-contain object-center rounded-lg"
                     />
                 </div>
                 <div className="flex flex-col gap-0.5">
