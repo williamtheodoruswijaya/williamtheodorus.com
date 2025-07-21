@@ -5,6 +5,7 @@ import Typewriter from 'typewriter-effect';
 import { motion } from "framer-motion";
 import {useCallback, useState} from "react";
 import {Loader} from "@/elements/Loader/Loader";
+import {Download, Mail} from "lucide-react";
 
 const Slime = dynamic(() => import('@/components/Slime').then(mod => mod.Slime), {
     ssr: false,
@@ -69,6 +70,26 @@ const Hero = () => {
                     <i className="font-bold">Software Engineer</i>
                     {' '}with a strong interest in turning data into meaningful insights and building impactful, scalable software solutions.
                 </motion.p>
+                <motion.div
+                    className="flex gap-4"
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2.2, duration: 1 }}
+                >
+                    <a
+                        href={"/CV.pdf"}
+                        download
+                        className="flex items-center gap-2 px-6 py-3 bg-white text-sky-700 font-semibold rounded-xl shadow-md hover:bg-sky-100 transition"
+                    >
+                        <Download size={18} /> Download CV
+                    </a>
+                    <a
+                        href={"#contact"}
+                        className="flex items-center gap-2 px-6 py-3 border border-white text-white font-semibold rounded-xl hover:bg-white hover:text-sky-700 transition"
+                    >
+                        <Mail size={18} /> Contact Me
+                    </a>
+                </motion.div>
             </div>
 
             <Slime onLoad={handleSplineLoad}/>

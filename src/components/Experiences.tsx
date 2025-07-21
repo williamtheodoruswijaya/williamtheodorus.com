@@ -36,12 +36,13 @@ const Experiences = () => {
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
-                animate="visible"
+                whileInView="visible"
+                viewport={{ once: true }}
                 className="grid grid-cols-1 gap-[40px] z-10 mt-8 w-full px-4 md:px-0 md:max-w-[700px]"
             >
                 <AnimatePresence>
                     {EXPERIENCES.slice(0, visibleCount).map((experience) => (
-                        <motion.div key={experience.name} variants={itemVariants} layout>
+                        <motion.div key={experience.name} variants={itemVariants} layout initial="hidden" whileInView="visible" viewport={{ once: true }}>
                             <ExperienceCard {...experience} />
                         </motion.div>
                     ))}

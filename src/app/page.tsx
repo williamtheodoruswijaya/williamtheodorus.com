@@ -15,8 +15,8 @@ const Home = () => {
             <div className="relative overflow-hidden bg-black">
                 <div className="bg-gradient-to-b from-black via-sky-800 to-black">
                     <div className="absolute top-[10%] left-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl -translate-x-1/2 -z-10"></div>
-                    <div className="absolute top-[40%] right-0 w-[32rem] h-[32rem] bg-emerald-500/20 rounded-full blur-3xl translate-x-1/2 -z-10"></div>
-                    <div className="absolute bottom-[20%] left-0 w-[28rem] h-[28rem] bg-cyan-500/20 rounded-full blur-3xl -translate-x-1/3 -z-10"></div>
+                    <div className="absolute top-[40%] right-0 w-[24rem] h-[24rem] bg-emerald-500/15 rounded-full blur-lg translate-x-1/2 -z-10"></div>
+                    <div className="absolute bottom-[20%] left-0 w-[28rem] h-[28rem] bg-cyan-500/20 rounded-full blur-xl -translate-x-1/3 -z-10"></div>
                     <Experiences/>
                     <Projects/>
                     <Contact/>
