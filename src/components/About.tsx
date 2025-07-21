@@ -24,8 +24,8 @@ const skills = [
 const About = () => {
     return (
         <section id="about" className="relative bg-black flex flex-col items-center justify-center gap-12 z-10 py-20 md:py-40 overflow-hidden">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-sky-600/20 rounded-full blur-3xl -translate-x-1/2 -z-10"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl translate-x-1/2 -z-10"></div>
+            <div className="absolute top-[40%] left-0 w-96 h-96 bg-sky-600/20 rounded-full blur-3xl -translate-x-1/2 -z-10"></div>
+            <div className="absolute bottom-[40%] right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl translate-x-1/2 -z-10"></div>
 
             <motion.h1
                 initial={{ opacity: 0, y: 20 }}
