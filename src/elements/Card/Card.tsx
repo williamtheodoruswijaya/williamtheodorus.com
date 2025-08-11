@@ -35,7 +35,7 @@ const IconLink = ({ href, children }: { href: string; children: React.ReactNode 
     </a>
 );
 
-const ProjectCard = ({
+export const ProjectCard = ({
                          name,
                          image,
                          description,
@@ -92,7 +92,7 @@ const ProjectCard = ({
     );
 };
 
-const ExperienceCard = ({
+export const ExperienceCard = ({
                             name,
                             majorRole,
                             roles,
@@ -186,5 +186,3 @@ const ExperienceCard = ({
         </div>
     );
 };
-
-export { ProjectCard, ExperienceCard };

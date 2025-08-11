@@ -2,20 +2,21 @@ import { ProjectType } from "./interface";
 
 const PROJECTS: ProjectType[] = [
   {
-    name: "Analisis dan Prediksi Kinerja Saham e-IPO Menggunakan Pendekatan Tabular Transformer dan Attention Mechanism",
-    image: "/projects/4.jpg",
+    name: "Urban Water Quality Monitoring with Multimodal AI",
+    image: "/projects/8.jpg",
     description:
-      "Developed predictive models using Tabular Transformers, such as TabPFN and TabNet, to analyze and forecast the performance of e-IPO stocks in Indonesia , aiming to provide a data-driven tool for investment decision-making.",
-    skills: ["Deep Learning", "Web Scraping", "Data Analysis", "Transformer"],
+        "Develops an urban water pollution risk classification system by fusing multimodal data from citizen reports. By combining textual and visual data with geospatial and temporal feature.",
+    skills: [
+      "Machine Learning",
+      "Modality",
+      "Natural Language Processing",
+      "Image Processing"
+    ],
     links: [
       {
-        name: "Repository",
-        url: "https://github.com/williamtheodoruswijaya/Kode_Lagi-Uas-Gaskeun",
-      },
-      {
         name: "Paper",
-        url: "https://drive.google.com/file/d/1z2VIbjPNYCVO7tMtjybwR-TTNEXpwfCA/view?usp=sharing",
-      },
+        url: "https://drive.google.com/file/d/1DcQ7ss-r3WeN4zpuYMpuGhWxgfY8BK7L/view?usp=sharing"
+      }
     ],
     types: ["Data Science"],
   },
@@ -62,6 +63,24 @@ const PROJECTS: ProjectType[] = [
       { name: "Repository", url: "https://github.com/Reynardstw/VoxA" },
     ],
     types: ["Software Engineering"],
+  },
+  {
+    name: "Predicting e-IPO Stock Performance using Tabular Transformers",
+    image: "/projects/4.jpg",
+    description:
+        "Developed predictive models using Tabular Transformers, such as TabPFN and TabNet, to analyze and forecast the performance of e-IPO stocks in Indonesia , aiming to provide a data-driven tool for investment decision-making.",
+    skills: ["Deep Learning", "Web Scraping", "Data Analysis", "Transformer"],
+    links: [
+      {
+        name: "Repository",
+        url: "https://github.com/williamtheodoruswijaya/Kode_Lagi-Uas-Gaskeun",
+      },
+      {
+        name: "Paper",
+        url: "https://drive.google.com/file/d/1z2VIbjPNYCVO7tMtjybwR-TTNEXpwfCA/view?usp=sharing",
+      },
+    ],
+    types: ["Data Science"],
   },
   {
     name: "Sea Salon",
