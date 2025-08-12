@@ -85,7 +85,6 @@ const Hero = () => {
                         priority
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-500/20 to-transparent"></div>
                 </div>
             </motion.div>
         </section>
