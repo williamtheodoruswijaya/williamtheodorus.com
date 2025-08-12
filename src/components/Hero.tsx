@@ -1,34 +1,13 @@
 "use client";
 
-import dynamic from 'next/dynamic';
 import Typewriter from 'typewriter-effect';
 import { motion } from "framer-motion";
-import {useCallback, useState} from "react";
-import {Loader} from "@/elements/Loader/Loader";
 import {Download, Mail} from "lucide-react";
-
-const Slime = dynamic(() => import('@/components/Slime').then(mod => mod.Slime), {
-    ssr: false,
-});
+import Image from "next/image";
 
 const Hero = () => {
-    const [loading, setLoading] = useState(true);
-    const handleSplineLoad = useCallback(() => {
-        setLoading(false);
-    }, []);
     return (
         <section className={"h-screen bg-gradient-to-b from-sky-600 to-black flex xl:flex-row flex-col-reverse items-center justify-between lg:px-24 px-4 relative overflow-hidden"}>
-            {loading && (
-                <motion.div
-                    className="fixed inset-0 z-[999] bg-black flex items-center justify-center"
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                >
-                    <Loader/>
-                </motion.div>
-            )}
-
             {/* Left Section */}
             <div className={"flex flex-col gap-4 lg:gap-8 z-40 xl:mb-0 mb-[20%]"}>
                 <motion.div
@@ -92,7 +71,23 @@ const Hero = () => {
                 </motion.div>
             </div>
 
-            <Slime onLoad={handleSplineLoad}/>
+            <motion.div
+                initial={{ opacity: 0, scale: 0.8, x: 100 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                transition={{ type: 'spring', stiffness: 50, delay: 0.5 }}
+                className="hidden xl:flex items-center justify-center z-30"
+            >
+                <div className="relative w-[350px] h-[450px] rounded-[18px] overflow-hidden border-4 border-cyan-400/30 shadow-2xl shadow-cyan-500/20">
+                    <Image
+                        src="/assets/self-potrait.jpg"
+                        alt="Foto Profil William Theodorus"
+                        fill
+                        priority
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-sky-500/20 to-transparent"></div>
+                </div>
+            </motion.div>
         </section>
     );
 };

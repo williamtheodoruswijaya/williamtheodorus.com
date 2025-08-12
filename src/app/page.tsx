@@ -1,13 +1,11 @@
-import Hero from "@/components/Hero"; // Adjust path if needed
-import Experiences from "@/components/Experiences"; // Adjust path if needed
+import Hero from "@/components/Hero";
+import Experiences from "@/components/Experiences";
 import Projects from "@/components/Projects";
 import {Header} from "@/components/Header";
 import Contact from "@/components/Contact";
 import About from "@/components/About";
 import {Footer} from "@/components/Footer";
-import Image from "next/image"; // Adjust path if needed
-
-// File: src/app/page.tsx atau di mana komponen Home berada
+import Image from "next/image";
 
 const Home = () => {
     return (
