@@ -195,10 +195,21 @@ const Hero = () => {
         transition={{ type: "spring", stiffness: 50, delay: 0.5 }}
         className="hidden xl:flex items-center justify-center z-30 relative"
       >
-        <div className="absolute w-[400px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl -z-10" />
-        <div
+        {/* Glow with smooth entry */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
+          className="absolute w-[400px] h-[500px] bg-purple-500/20 rounded-full blur-3xl -z-10"
+        />
+
+        {/* Profile frame */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
           className="relative w-[350px] h-[450px] rounded-[18px] overflow-hidden 
-                        border-4 border-cyan-400/30 shadow-2xl shadow-cyan-500/20"
+               border-4 border-purple-400/30 shadow-2xl shadow-purple-500/20"
         >
           <Image
             src="/assets/self-potrait.jpg"
@@ -207,7 +218,7 @@ const Hero = () => {
             priority
             className="object-cover"
           />
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Scroll Down Arrow */}
