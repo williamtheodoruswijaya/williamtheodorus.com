@@ -1,6 +1,6 @@
-import { ProjectType } from "./interface";
+import { Project } from "@/types/project";
 
-const PROJECTS: ProjectType[] = [
+const PROJECTS: Project[] = [
   {
     name: "Urban Water Quality Monitoring with Multimodal AI",
     image: "/projects/8.jpg",

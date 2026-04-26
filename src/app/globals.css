@@ -1,28 +1,166 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #09090b;
+  --surface: #ffffff;
+  --surface-muted: #f4f4f5;
+  --surface-raised: rgba(255, 255, 255, 0.92);
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-foreground: #ffffff;
+  --accent-soft: #dbeafe;
+  --muted: #52525b;
+  --muted-strong: #3f3f46;
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+  --focus-ring: #bfdbfe;
+  --grid-line: rgba(24, 24, 27, 0.07);
+  --shadow-soft: 0 24px 80px rgba(24, 24, 27, 0.12);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --surface: #111827;
+  --surface-muted: #1e293b;
+  --surface-raised: rgba(17, 24, 39, 0.92);
+  --accent: #22c55e;
+  --accent-strong: #16a34a;
+  --accent-foreground: #052e16;
+  --accent-soft: rgba(34, 197, 94, 0.16);
+  --muted: #cbd5e1;
+  --muted-strong: #e2e8f0;
+  --line: rgba(148, 163, 184, 0.24);
+  --line-strong: rgba(148, 163, 184, 0.42);
+  --focus-ring: rgba(34, 197, 94, 0.34);
+  --grid-line: rgba(248, 250, 252, 0.08);
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.34);
+  color-scheme: dark;
 }
 
 @layer components {
   .grid-default-color {
-    @apply bg-slate-800 rounded-xl;
+    background: var(--surface-muted);
+    @apply rounded-lg;
+  }
+
+  .site-shell {
+    background: var(--background);
+    color: var(--foreground);
+    @apply min-h-screen transition-colors duration-200;
+  }
+
+  .site-container {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .site-section {
+    background: var(--surface);
+    border-color: var(--line);
+    @apply border-b px-6 py-24 transition-colors duration-200 lg:px-8;
+  }
+
+  .site-section-muted {
+    background: var(--background);
+  }
+
+  .uip-card {
+    background: var(--surface);
+    border-color: var(--line);
+    @apply rounded-lg border shadow-sm transition-colors duration-200;
+  }
+
+  .uip-card-muted {
+    background: var(--surface-muted);
+    border-color: var(--line);
+    @apply rounded-lg border transition-colors duration-200;
+  }
+
+  .uip-raised {
+    background: var(--surface-raised);
+    border-color: var(--line);
+    @apply rounded-lg border shadow-lg backdrop-blur-xl;
+  }
+
+  .uip-eyebrow {
+    color: var(--accent);
+    @apply text-xs font-semibold uppercase tracking-[0.22em];
+  }
+
+  .uip-heading {
+    color: var(--foreground);
+    @apply font-heading font-semibold leading-tight;
+  }
+
+  .uip-copy {
+    color: var(--muted);
+  }
+
+  .uip-copy-strong {
+    color: var(--muted-strong);
+  }
+
+  .uip-button-primary {
+    background: var(--accent);
+    color: var(--accent-foreground);
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold shadow-sm transition-colors duration-200;
+  }
+
+  .uip-button-primary:hover {
+    background: var(--accent-strong);
+  }
+
+  .uip-button-secondary {
+    background: var(--surface);
+    border-color: var(--line-strong);
+    color: var(--foreground);
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border px-5 py-3 text-sm font-semibold transition-colors duration-200;
+  }
+
+  .uip-button-secondary:hover {
+    background: var(--surface-muted);
+    border-color: var(--line-strong);
+  }
+
+  .uip-icon-button {
+    background: var(--surface);
+    border-color: var(--line);
+    color: var(--muted);
+    @apply flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg border transition-colors duration-200;
+  }
+
+  .uip-icon-button:hover {
+    background: var(--surface-muted);
+    color: var(--foreground);
+  }
+
+  .uip-pill {
+    background: var(--surface-muted);
+    border-color: var(--line);
+    color: var(--muted);
+    @apply rounded-md border px-2.5 py-1 text-xs font-medium;
+  }
+
+  .uip-field {
+    background: var(--surface);
+    border-color: var(--line-strong);
+    color: var(--foreground);
+    @apply w-full rounded-lg border px-4 py-3 text-sm outline-none transition-colors duration-200 placeholder:text-zinc-400;
+  }
+
+  .uip-field:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--focus-ring);
   }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-space-grotesk);
+  --font-heading: var(--font-archivo);
 }
 
 @keyframes slowGlow {
@@ -41,8 +179,42 @@
   animation: slowGlow 14s ease-in-out infinite;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-space-grotesk), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #bfdbfe;
+  color: #09090b;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(a, button, input, textarea, [role="button"]):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

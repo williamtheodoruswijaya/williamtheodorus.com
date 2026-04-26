@@ -1,35 +1,21 @@
-import Hero from "@/components/Hero";
-import Experiences from "@/components/Experiences";
-import Projects from "@/components/Projects";
-import { Header } from "@/components/Header";
-import Contact from "@/components/Contact";
-import About from "@/components/About";
-import { Footer } from "@/components/Footer";
-import Image from "next/image";
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
+import AboutSection from "@/components/sections/about-section";
+import ContactSection from "@/components/sections/contact-section";
+import ExperienceSection from "@/components/sections/experience-section";
+import HeroSection from "@/components/sections/hero-section";
+import ProjectsSection from "@/components/sections/projects-section";
 
 const Home = () => {
   return (
-    <main>
+    <main className="site-shell">
       <Header />
-      <Hero />
-      <About />
-      <div className="relative overflow-hidden bg-black">
-        <div className="absolute top-0 left-0 w-full h-full -z-10">
-          <Image
-            src="/background-effect.png"
-            alt="background effect"
-            className="w-full h-full object-cover"
-            width={400}
-            height={400}
-          />
-        </div>
-        <div className="bg-gradient-to-b from-black via-sky-800/50 to-black">
-          <Experiences />
-          <Projects />
-          <Contact />
-          <Footer />
-        </div>
-      </div>
+      <HeroSection />
+      <AboutSection />
+      <ExperienceSection />
+      <ProjectsSection />
+      <ContactSection />
+      <Footer />
     </main>
   );
 };
