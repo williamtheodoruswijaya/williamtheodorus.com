@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link as ScrollLink } from "react-scroll";
 import emailjs from "@emailjs/browser";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -43,11 +44,16 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [contactFormOpen, setContactFormOpen] = useState(false);
   const [clock, setClock] = useState("");
+  const [mounted, setMounted] = useState(false);
   const form = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const updateClock = () => {
@@ -271,117 +277,125 @@ export const Header = () => {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {contactFormOpen && (
-          <motion.div
-            initial={shouldReduceMotion ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[99] flex items-center justify-center bg-zinc-950/50 p-4 backdrop-blur-sm"
-          >
-            <motion.div
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="header-contact-title"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 24 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="uip-card relative w-full max-w-lg p-6 shadow-2xl"
-            >
-              <div className="mb-6 flex items-start justify-between gap-4">
-                <div>
-                  <p className="uip-eyebrow">Contact</p>
-                  <h2
-                    id="header-contact-title"
-                    className="uip-heading mt-2 text-2xl"
-                  >
-                    Tell me about your idea
-                  </h2>
-                </div>
-                <button
-                  type="button"
-                  onClick={closeContactForm}
-                  className="uip-icon-button"
-                  aria-label="Close contact form"
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {contactFormOpen && (
+              <motion.div
+                initial={shouldReduceMotion ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-[99] flex items-center justify-center bg-zinc-950/50 p-4 backdrop-blur-sm"
+              >
+                <motion.div
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="header-contact-title"
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 24 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="uip-card relative w-full max-w-lg p-6 shadow-2xl"
                 >
-                  <X className="h-5 w-5" aria-hidden="true" />
-                </button>
-              </div>
+                  <div className="mb-6 flex items-start justify-between gap-4">
+                    <div>
+                      <p className="uip-eyebrow">Contact</p>
+                      <h2
+                        id="header-contact-title"
+                        className="uip-heading mt-2 text-2xl"
+                      >
+                        Tell me about your idea
+                      </h2>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={closeContactForm}
+                      className="uip-icon-button"
+                      aria-label="Close contact form"
+                    >
+                      <X className="h-5 w-5" aria-hidden="true" />
+                    </button>
+                  </div>
 
-              <form ref={form} onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="header-name"
-                    className="uip-copy-strong mb-2 block text-sm font-medium"
+                  <form
+                    ref={form}
+                    onSubmit={handleSubmit}
+                    className="space-y-4"
                   >
-                    Name
-                  </label>
-                  <input
-                    name="from_name"
-                    type="text"
-                    id="header-name"
-                    placeholder="Your name"
-                    required
-                    className="uip-field"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="header-email"
-                    className="uip-copy-strong mb-2 block text-sm font-medium"
-                  >
-                    Email
-                  </label>
-                  <input
-                    name="from_email"
-                    type="email"
-                    id="header-email"
-                    placeholder="you@example.com"
-                    required
-                    className="uip-field"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="header-message"
-                    className="uip-copy-strong mb-2 block text-sm font-medium"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    id="header-message"
-                    placeholder="What should we build?"
-                    required
-                    className="uip-field"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="uip-button-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  <Send className="h-4 w-4" aria-hidden="true" />
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </button>
-                <div className="min-h-6 text-center text-sm">
-                  {isSuccess && (
-                    <p className="text-[var(--accent)]">
-                      Message sent successfully.
-                    </p>
-                  )}
-                  {errorMessage && (
-                    <p className="text-red-600">{errorMessage}</p>
-                  )}
-                </div>
-              </form>
-            </motion.div>
-          </motion.div>
+                    <div>
+                      <label
+                        htmlFor="header-name"
+                        className="uip-copy-strong mb-2 block text-sm font-medium"
+                      >
+                        Name
+                      </label>
+                      <input
+                        name="from_name"
+                        type="text"
+                        id="header-name"
+                        placeholder="Your name"
+                        required
+                        className="uip-field"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="header-email"
+                        className="uip-copy-strong mb-2 block text-sm font-medium"
+                      >
+                        Email
+                      </label>
+                      <input
+                        name="from_email"
+                        type="email"
+                        id="header-email"
+                        placeholder="you@example.com"
+                        required
+                        className="uip-field"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="header-message"
+                        className="uip-copy-strong mb-2 block text-sm font-medium"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        name="message"
+                        rows={4}
+                        id="header-message"
+                        placeholder="What should we build?"
+                        required
+                        className="uip-field"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="uip-button-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      <Send className="h-4 w-4" aria-hidden="true" />
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </button>
+                    <div className="min-h-6 text-center text-sm">
+                      {isSuccess && (
+                        <p className="text-[var(--accent)]">
+                          Message sent successfully.
+                        </p>
+                      )}
+                      {errorMessage && (
+                        <p className="text-red-600">{errorMessage}</p>
+                      )}
+                    </div>
+                  </form>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </header>
   );
 };
