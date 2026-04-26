@@ -129,7 +129,7 @@ const HeroSection = () => {
               alt="Portrait of William Theodorus"
               fill
               priority
-              sizes="(min-width: 1024px) 1680px, 100vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px"
               className="object-cover"
             />
           </div>
