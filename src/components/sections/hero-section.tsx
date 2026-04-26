@@ -2,9 +2,9 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, Download, Github, Mail } from "lucide-react";
-import Image from "next/image";
 import CountUp from "react-countup";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const HeroSection = () => {
   const [repoCount, setRepoCount] = useState<number | null>(null);
@@ -56,7 +56,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative isolate min-h-screen overflow-hidden border-b border-[var(--line)] bg-[var(--background)] px-6 pb-20 pt-32 transition-colors duration-200 sm:pt-36 lg:px-8"
+      className="relative isolate min-h-[calc(100vh-10rem)] overflow-hidden border-b border-[var(--line)] bg-[var(--surface)] px-5 pb-16 pt-12 transition-colors duration-200 sm:px-6 sm:pt-16 lg:px-8"
     >
       <div
         aria-hidden="true"
@@ -134,7 +134,7 @@ const HeroSection = () => {
             />
           </div>
           <div className="uip-raised absolute -bottom-6 left-4 right-4 p-4 sm:left-auto sm:w-72">
-            <p className="uip-eyebrow tracking-[0.18em]">Current focus</p>
+            <p className="uip-eyebrow">Current focus</p>
             <p className="uip-copy mt-2 text-sm leading-6">
               Data science, Software Engineering, and production-minded
               prototypes for ideas that need to become usable fast.

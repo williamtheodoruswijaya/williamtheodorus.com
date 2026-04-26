@@ -13,7 +13,10 @@ import { Project } from "@/types/project";
 const GetLinkIcon = ({ name }: { name: string }) => {
   const lowerCaseName = name.toLowerCase();
   if (lowerCaseName.includes("deck")) return <FaSpeakerDeck />;
-  if (lowerCaseName.includes("github") || lowerCaseName.includes("repository")) {
+  if (
+    lowerCaseName.includes("github") ||
+    lowerCaseName.includes("repository")
+  ) {
     return <FiGithub />;
   }
   if (lowerCaseName.includes("paper")) return <FaResearchgate />;
@@ -29,7 +32,13 @@ const IconLink = ({
   label: string;
   children: React.ReactNode;
 }) => (
-  <a href={href} target="_blank" rel="noreferrer" aria-label={label} className="uip-icon-button h-9 w-9">
+  <a
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+    aria-label={label}
+    className="uip-icon-button h-9 w-9"
+  >
     {children}
   </a>
 );
@@ -49,7 +58,12 @@ export const ProjectCard = ({
 
   return (
     <article className="uip-card group flex h-full flex-col overflow-hidden hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-xl">
-      <a href={primaryLink} target="_blank" rel="noreferrer" className="block cursor-pointer">
+      <a
+        href={primaryLink}
+        target="_blank"
+        rel="noreferrer"
+        className="block cursor-pointer"
+      >
         {image && (
           <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-[var(--line)] bg-[var(--surface-muted)]">
             <Image
@@ -65,7 +79,12 @@ export const ProjectCard = ({
 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-start justify-between gap-4">
-          <a href={primaryLink} target="_blank" rel="noreferrer" className="cursor-pointer">
+          <a
+            href={primaryLink}
+            target="_blank"
+            rel="noreferrer"
+            className="cursor-pointer"
+          >
             <h3 className="uip-heading text-2xl transition-colors duration-200 group-hover:text-[var(--accent)]">
               {name}
             </h3>
@@ -118,7 +137,7 @@ export const ExperienceCard = ({
   return (
     <article className="uip-card p-5 hover:border-[var(--line-strong)] md:p-6">
       <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-        <div className="uip-card-muted relative h-20 w-20 shrink-0 overflow-hidden p-2">
+        <div className="uip-card-muted relative h-20 w-20 shrink-0 overflow-hidden p-2 bg-white">
           <Image
             src={logo}
             alt={`${name} logo`}

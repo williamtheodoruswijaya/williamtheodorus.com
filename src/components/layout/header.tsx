@@ -1,13 +1,22 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Github, Linkedin, Mail, Menu, Send, X } from "lucide-react";
+import {
+  BatteryMedium,
+  Github,
+  Linkedin,
+  Mail,
+  Menu,
+  Send,
+  Wifi,
+  X,
+} from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
-import { useRef, useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import emailjs from "@emailjs/browser";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import Image from "next/image";
 
 const navItems = [
   { name: "Home", link: "home" },
@@ -33,11 +42,28 @@ const socialLinks = [
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [contactFormOpen, setContactFormOpen] = useState(false);
+  const [clock, setClock] = useState("");
   const form = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const updateClock = () => {
+      setClock(
+        new Intl.DateTimeFormat("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          weekday: "short",
+        }).format(new Date()),
+      );
+    };
+
+    updateClock();
+    const timer = window.setInterval(updateClock, 30_000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   const openContactForm = () => {
     setIsSuccess(false);
@@ -80,18 +106,18 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed left-0 right-0 top-4 z-50 px-4">
+    <header className="os-menu-bar">
       <motion.div
-        initial={shouldReduceMotion ? false : { opacity: 0, y: -16 }}
+        initial={shouldReduceMotion ? false : { opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-        className="uip-raised site-container flex h-16 items-center justify-between px-3 sm:px-4"
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="site-container flex min-h-12 items-center justify-between gap-3 px-4"
       >
         <ScrollLink
           to="home"
           smooth
           duration={500}
-          className="flex cursor-pointer items-center gap-3 rounded-md pr-2"
+          className="os-menu-brand"
           aria-label="Go to home"
         >
           <span className="uip-card-muted relative h-10 w-10 overflow-hidden">
@@ -104,16 +130,19 @@ export const Header = () => {
             />
           </span>
           <span className="hidden leading-tight sm:block">
-            <span className="uip-heading block text-sm">
-              William Theodorus
+            <span className="block text-sm font-semibold text-[var(--foreground)]">
+              William Theodorus Wijaya
             </span>
-            <span className="uip-copy block text-xs">
-              Data Science + Software
+            <span className="block text-[10px] text-[var(--muted)]">
+              Portfolio.app
             </span>
           </span>
         </ScrollLink>
 
-        <nav className="hidden items-center rounded-lg p-1 lg:flex uip-card-muted">
+        <nav
+          className="hidden items-center gap-1 lg:flex"
+          aria-label="Primary navigation"
+        >
           {navItems.map((item) => (
             <ScrollLink
               key={item.link}
@@ -121,16 +150,16 @@ export const Header = () => {
               to={item.link}
               spy
               smooth
-              offset={-96}
+              offset={-80}
               duration={500}
-              className="cursor-pointer rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 uip-copy hover:text-[var(--foreground)] [&.is-active]:bg-[var(--surface)] [&.is-active]:text-[var(--foreground)] [&.is-active]:shadow-sm"
+              className="os-menu-item"
             >
               {item.name}
             </ScrollLink>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-1 md:flex">
           {socialLinks.map(({ label, href, icon: Icon }) => (
             <a
               key={label}
@@ -138,7 +167,7 @@ export const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="uip-icon-button"
+              className="uip-icon-button h-9 w-9"
             >
               <Icon className="h-4 w-4" aria-hidden="true" />
             </a>
@@ -148,7 +177,7 @@ export const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Discord"
-            className="uip-icon-button"
+            className="uip-icon-button h-9 w-9"
           >
             <FaDiscord className="h-4 w-4" aria-hidden="true" />
           </a>
@@ -156,11 +185,16 @@ export const Header = () => {
           <button
             type="button"
             onClick={openContactForm}
-            className="uip-button-primary ml-1 min-h-10 px-4 py-2"
+            className="uip-button-primary ml-1 min-h-9 px-3 py-2"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
             Contact
           </button>
+          <div className="ml-2 hidden items-center gap-2 text-xs text-[var(--muted)] xl:flex">
+            <Wifi className="h-4 w-4" aria-hidden="true" />
+            <BatteryMedium className="h-4 w-4" aria-hidden="true" />
+            <span>{clock || "--:--"}</span>
+          </div>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -168,8 +202,10 @@ export const Header = () => {
           <button
             type="button"
             onClick={() => setIsOpen((value) => !value)}
-            className="uip-icon-button"
-            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            className="uip-icon-button h-9 w-9"
+            aria-label={
+              isOpen ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={isOpen}
           >
             {isOpen ? (
@@ -188,7 +224,7 @@ export const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="uip-raised site-container mt-2 p-3 md:hidden"
+            className="site-container os-mobile-menu mt-2 p-3 md:hidden"
           >
             <nav className="flex flex-col gap-1">
               {navItems.map((item) => (
@@ -197,10 +233,10 @@ export const Header = () => {
                   to={item.link}
                   spy
                   smooth
-                  offset={-96}
+                  offset={-80}
                   duration={500}
                   onClick={() => setIsOpen(false)}
-                  className="uip-copy cursor-pointer rounded-md px-3 py-3 text-sm font-medium transition-colors duration-200 hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
+                  className="os-menu-item min-h-11"
                 >
                   {item.name}
                 </ScrollLink>
@@ -214,7 +250,7 @@ export const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="uip-icon-button"
+                  className="uip-icon-button h-10 w-10"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </a>
@@ -256,8 +292,11 @@ export const Header = () => {
             >
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
-                  <p className="uip-eyebrow tracking-[0.18em]">Contact</p>
-                  <h2 id="header-contact-title" className="uip-heading mt-2 text-2xl">
+                  <p className="uip-eyebrow">Contact</p>
+                  <h2
+                    id="header-contact-title"
+                    className="uip-heading mt-2 text-2xl"
+                  >
                     Tell me about your idea
                   </h2>
                 </div>
@@ -330,9 +369,13 @@ export const Header = () => {
                 </button>
                 <div className="min-h-6 text-center text-sm">
                   {isSuccess && (
-                    <p className="text-emerald-600">Message sent successfully.</p>
+                    <p className="text-[var(--accent)]">
+                      Message sent successfully.
+                    </p>
                   )}
-                  {errorMessage && <p className="text-red-600">{errorMessage}</p>}
+                  {errorMessage && (
+                    <p className="text-red-600">{errorMessage}</p>
+                  )}
                 </div>
               </form>
             </motion.div>

@@ -1,42 +1,54 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #09090b;
-  --surface: #ffffff;
-  --surface-muted: #f4f4f5;
-  --surface-raised: rgba(255, 255, 255, 0.92);
-  --accent: #2563eb;
-  --accent-strong: #1d4ed8;
+  --font-sf-mono: "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --background: #f6f7fb;
+  --foreground: #101014;
+  --surface: rgba(255, 255, 255, 0.96);
+  --surface-muted: rgba(244, 246, 251, 0.92);
+  --surface-raised: rgba(255, 255, 255, 0.86);
+  --accent: #4f46e5;
+  --accent-strong: #4338ca;
   --accent-foreground: #ffffff;
-  --accent-soft: #dbeafe;
-  --muted: #52525b;
-  --muted-strong: #3f3f46;
-  --line: #e4e4e7;
-  --line-strong: #d4d4d8;
-  --focus-ring: #bfdbfe;
-  --grid-line: rgba(24, 24, 27, 0.07);
-  --shadow-soft: 0 24px 80px rgba(24, 24, 27, 0.12);
+  --accent-soft: rgba(79, 70, 229, 0.12);
+  --muted: #555565;
+  --muted-strong: #30303a;
+  --line: rgba(39, 39, 48, 0.12);
+  --line-strong: rgba(39, 39, 48, 0.2);
+  --focus-ring: rgba(79, 70, 229, 0.28);
+  --grid-line: rgba(39, 39, 48, 0.07);
+  --chrome: rgba(255, 255, 255, 0.74);
+  --chrome-strong: rgba(255, 255, 255, 0.9);
+  --dock: rgba(255, 255, 255, 0.72);
+  --desktop-bg:
+    linear-gradient(135deg, #e9eefb 0%, #f8fafc 48%, #e8f6ff 100%);
+  --shadow-soft: 0 24px 80px rgba(24, 24, 27, 0.14);
   color-scheme: light;
 }
 
 [data-theme="dark"] {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --surface: #111827;
-  --surface-muted: #1e293b;
-  --surface-raised: rgba(17, 24, 39, 0.92);
-  --accent: #22c55e;
-  --accent-strong: #16a34a;
-  --accent-foreground: #052e16;
-  --accent-soft: rgba(34, 197, 94, 0.16);
-  --muted: #cbd5e1;
-  --muted-strong: #e2e8f0;
-  --line: rgba(148, 163, 184, 0.24);
-  --line-strong: rgba(148, 163, 184, 0.42);
-  --focus-ring: rgba(34, 197, 94, 0.34);
+  --background: #090b13;
+  --foreground: #f7f7fb;
+  --surface: rgba(18, 21, 32, 0.96);
+  --surface-muted: rgba(28, 32, 47, 0.92);
+  --surface-raised: rgba(19, 22, 35, 0.82);
+  --accent: #a78bfa;
+  --accent-strong: #c4b5fd;
+  --accent-foreground: #20113d;
+  --accent-soft: rgba(167, 139, 250, 0.18);
+  --muted: #c8c8d3;
+  --muted-strong: #e5e7f0;
+  --line: rgba(226, 232, 240, 0.16);
+  --line-strong: rgba(226, 232, 240, 0.28);
+  --focus-ring: rgba(167, 139, 250, 0.34);
   --grid-line: rgba(248, 250, 252, 0.08);
-  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.34);
+  --chrome: rgba(12, 15, 25, 0.72);
+  --chrome-strong: rgba(18, 21, 32, 0.92);
+  --dock: rgba(12, 15, 25, 0.76);
+  --desktop-bg:
+    linear-gradient(135deg, #080a12 0%, #111827 54%, #24173f 100%);
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.42);
   color-scheme: dark;
 }
 
@@ -47,23 +59,23 @@
   }
 
   .site-shell {
-    background: var(--background);
+    background: var(--desktop-bg);
     color: var(--foreground);
     @apply min-h-screen transition-colors duration-200;
   }
 
   .site-container {
-    @apply mx-auto max-w-6xl;
+    @apply mx-auto w-full max-w-6xl;
   }
 
   .site-section {
     background: var(--surface);
     border-color: var(--line);
-    @apply border-b px-6 py-24 transition-colors duration-200 lg:px-8;
+    @apply scroll-mt-24 border-b px-5 py-20 transition-colors duration-200 sm:px-6 lg:px-8;
   }
 
   .site-section-muted {
-    background: var(--background);
+    background: var(--surface-muted);
   }
 
   .uip-card {
@@ -86,7 +98,7 @@
 
   .uip-eyebrow {
     color: var(--accent);
-    @apply text-xs font-semibold uppercase tracking-[0.22em];
+    @apply text-xs font-semibold uppercase;
   }
 
   .uip-heading {
@@ -154,29 +166,147 @@
     border-color: var(--accent);
     box-shadow: 0 0 0 4px var(--focus-ring);
   }
+
+  .os-shell {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px),
+      var(--desktop-bg);
+    background-size: 56px 56px, 56px 56px, cover;
+    @apply min-h-screen;
+  }
+
+  .os-menu-bar {
+    background: var(--chrome);
+    border-color: var(--line);
+    @apply fixed left-0 right-0 top-0 z-50 border-b backdrop-blur-xl;
+  }
+
+  .os-menu-brand {
+    @apply flex min-h-11 cursor-pointer items-center gap-2 rounded-md px-1.5 transition-colors duration-200;
+  }
+
+  .os-menu-brand:hover {
+    background: var(--surface-muted);
+  }
+
+  .os-menu-item {
+    color: var(--muted);
+    @apply flex min-h-9 cursor-pointer items-center rounded-md px-3 text-xs font-semibold transition-colors duration-200;
+  }
+
+  .os-menu-item:hover,
+  .os-menu-item.is-active {
+    background: var(--surface-raised);
+    color: var(--foreground);
+  }
+
+  .os-mobile-menu {
+    background: var(--chrome-strong);
+    border-color: var(--line);
+    @apply rounded-lg border shadow-2xl backdrop-blur-xl;
+  }
+
+  .os-desktop {
+    @apply relative min-h-screen px-4 pb-28 pt-20 sm:px-5 lg:pt-24;
+  }
+
+  .os-desktop::before {
+    content: "";
+    background:
+      linear-gradient(120deg, transparent 0%, var(--accent-soft) 44%, transparent 88%);
+    opacity: 0.72;
+    @apply pointer-events-none absolute inset-x-0 top-0 h-48;
+  }
+
+  .os-desktop-shortcuts {
+    @apply relative z-10 mb-4 grid grid-cols-3 gap-2 sm:grid-cols-5 lg:absolute lg:left-1/2 lg:top-24 lg:mb-0 lg:-translate-x-1/2 lg:grid-cols-1 lg:gap-3;
+  }
+
+  .os-desktop-shortcut {
+    color: var(--foreground);
+    @apply flex min-h-24 cursor-pointer flex-col items-center justify-center gap-2 rounded-lg p-2 text-center text-xs font-semibold transition-colors duration-200 lg:w-24;
+  }
+
+  .os-desktop-shortcut:hover {
+    background: var(--surface-raised);
+  }
+
+  .os-desktop-icon {
+    background: var(--surface-raised);
+    border-color: var(--line);
+    color: var(--accent);
+    @apply flex h-12 w-12 items-center justify-center rounded-lg border shadow-sm backdrop-blur-xl;
+  }
+
+  .os-desktop-label {
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.18);
+    @apply max-w-full truncate;
+  }
+
+  .os-window-host {
+    @apply relative z-20;
+  }
+
+  .os-window {
+    background: var(--surface);
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow-soft);
+    @apply overflow-hidden rounded-lg border backdrop-blur-xl;
+  }
+
+  .os-window-titlebar {
+    background: var(--chrome-strong);
+    border-color: var(--line);
+    @apply sticky top-12 z-30 grid min-h-12 grid-cols-[1fr_auto_1fr] items-center gap-4 border-b px-4 backdrop-blur-xl;
+  }
+
+  .os-traffic {
+    @apply block h-3 w-3 rounded-full shadow-sm;
+  }
+
+  .os-window-content {
+    background: var(--surface);
+  }
+
+  .os-dock-wrap {
+    @apply pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-3;
+  }
+
+  .os-dock {
+    background: var(--dock);
+    border-color: var(--line);
+    box-shadow: var(--shadow-soft);
+    @apply pointer-events-auto flex max-w-[calc(100vw-1.5rem)] items-center gap-2 overflow-x-auto rounded-lg border px-2 py-2 backdrop-blur-xl;
+  }
+
+  .os-dock-icon {
+    background: var(--surface-raised);
+    border-color: var(--line);
+    color: var(--muted);
+    @apply flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-lg border transition-colors duration-200;
+  }
+
+  .os-dock-icon:hover,
+  .os-dock-icon.is-active {
+    background: var(--accent-soft);
+    color: var(--foreground);
+    border-color: var(--line-strong);
+  }
+
+  .os-dock-divider {
+    background: var(--line-strong);
+    @apply h-8 w-px shrink-0;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-space-grotesk);
-  --font-heading: var(--font-archivo);
-}
-
-@keyframes slowGlow {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.5;
-  }
-}
-
-.animate-slowGlow {
-  animation: slowGlow 14s ease-in-out infinite;
+  --font-sans: "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --font-heading: "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 html {
@@ -184,14 +314,14 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: var(--desktop-bg);
   color: var(--foreground);
-  font-family: var(--font-space-grotesk), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sf-mono);
 }
 
 ::selection {
-  background: #bfdbfe;
-  color: #09090b;
+  background: var(--accent-soft);
+  color: var(--foreground);
 }
 
 button,

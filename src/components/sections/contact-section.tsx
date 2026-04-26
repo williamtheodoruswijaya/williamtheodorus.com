@@ -138,7 +138,7 @@ const ContactSection = () => {
           </button>
           <div className="mt-4 min-h-6 text-sm">
             {isSuccess && (
-              <p className="text-emerald-600">
+              <p className="text-[var(--accent)]">
                 Message sent successfully. Thank you.
               </p>
             )}

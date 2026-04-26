@@ -3,7 +3,11 @@
 import { useEffect, useState } from "react";
 import { Eye } from "lucide-react";
 
-export const ViewCounter = () => {
+type ViewCounterProps = {
+  compact?: boolean;
+};
+
+export const ViewCounter = ({ compact = false }: ViewCounterProps) => {
   const [views, setViews] = useState<number | null>(null);
 
   useEffect(() => {
@@ -18,11 +22,14 @@ export const ViewCounter = () => {
   }, []);
 
   return (
-    <div className="uip-copy flex items-center gap-2 text-sm">
-      <Eye className="h-4 w-4" aria-hidden="true" />
+    <div className={`uip-copy flex items-center gap-2 ${compact ? "text-[10px]" : "text-sm"}`}>
+      <Eye className={compact ? "h-3 w-3" : "h-4 w-4"} aria-hidden="true" />
       <span>
-        This website has been visited{" "}
-        {views !== null ? views.toLocaleString() : "---"} times.
+        {compact
+          ? `${views !== null ? views.toLocaleString() : "---"} views`
+          : `This website has been visited ${
+              views !== null ? views.toLocaleString() : "---"
+            } times.`}
       </span>
     </div>
   );

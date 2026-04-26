@@ -6,12 +6,12 @@ This project keeps the implementation-facing design reference in `public/design-
 
 ## Portfolio Direction
 
-- Pattern: Portfolio Grid
-- Structure: Hero, project grid, about/philosophy, contact
+- Pattern: Portfolio Grid inside an OS-inspired desktop shell
+- Structure: menu bar, desktop shortcuts, portfolio window, project grid, dock
 - Style: Accessible & Ethical with portfolio-grade motion
-- Typography: Archivo for headings, Space Grotesk for body
-- Light theme: neutral white canvas with blue action color
-- Dark theme: code-dark canvas with green action color
+- Typography: SF Mono for headings and body
+- Light theme: neutral desktop canvas with indigo action color
+- Dark theme: code-dark desktop canvas with purple action color
 
 ## Interaction Rules
 
@@ -24,7 +24,7 @@ This project keeps the implementation-facing design reference in `public/design-
 
 ## Layout Rules
 
-- Fixed floating navbar uses inset spacing from viewport edges.
+- Fixed OS menu bar and dock use blurred chrome surfaces.
 - Shared max width is `max-w-6xl`.
 - Cards use 8px radius, stable dimensions, and clear borders.
 - Images reserve aspect ratio and use Next `Image` with `fill` or explicit dimensions.
