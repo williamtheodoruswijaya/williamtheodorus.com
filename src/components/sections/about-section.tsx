@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { FaPython, FaAws, FaDocker } from "react-icons/fa";
-import { FaGolang, FaFlutter } from "react-icons/fa6";
+import { FaGolang } from "react-icons/fa6";
 import { TbBrandCSharp } from "react-icons/tb";
 import {
   SiTensorflow,

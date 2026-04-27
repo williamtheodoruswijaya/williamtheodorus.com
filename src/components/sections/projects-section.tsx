@@ -99,7 +99,7 @@ const ProjectsSection = () => {
           initial={shouldReduceMotion ? false : "hidden"}
           animate="visible"
           layout={!shouldReduceMotion}
-          className="mt-10 grid min-h-[420px] grid-cols-1 items-start gap-5 md:grid-cols-2"
+          className="mt-10 grid min-h-[420px] grid-cols-1 items-start gap-5 md:grid-cols-2 xl:grid-cols-3"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.length > 0 ? (
