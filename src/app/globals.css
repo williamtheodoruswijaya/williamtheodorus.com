@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --font-sf-mono: "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-sf-mono:
+    "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
   --background: #f6f7fb;
   --foreground: #101014;
   --surface: rgba(255, 255, 255, 0.96);
@@ -21,8 +22,7 @@
   --chrome: rgba(255, 255, 255, 0.74);
   --chrome-strong: rgba(255, 255, 255, 0.9);
   --dock: rgba(255, 255, 255, 0.72);
-  --desktop-bg:
-    linear-gradient(135deg, #e9eefb 0%, #f8fafc 48%, #e8f6ff 100%);
+  --desktop-bg: linear-gradient(135deg, #e9eefb 0%, #f8fafc 48%, #e8f6ff 100%);
   --shadow-soft: 0 24px 80px rgba(24, 24, 27, 0.14);
   color-scheme: light;
 }
@@ -46,8 +46,7 @@
   --chrome: rgba(12, 15, 25, 0.72);
   --chrome-strong: rgba(18, 21, 32, 0.92);
   --dock: rgba(12, 15, 25, 0.76);
-  --desktop-bg:
-    linear-gradient(135deg, #080a12 0%, #111827 54%, #24173f 100%);
+  --desktop-bg: linear-gradient(135deg, #080a12 0%, #111827 54%, #24173f 100%);
   --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.42);
   color-scheme: dark;
 }
@@ -172,7 +171,10 @@
       linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
       linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px),
       var(--desktop-bg);
-    background-size: 56px 56px, 56px 56px, cover;
+    background-size:
+      56px 56px,
+      56px 56px,
+      cover;
     @apply min-h-screen;
   }
 
@@ -213,8 +215,12 @@
 
   .os-desktop::before {
     content: "";
-    background:
-      linear-gradient(120deg, transparent 0%, var(--accent-soft) 44%, transparent 88%);
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      var(--accent-soft) 44%,
+      transparent 88%
+    );
     opacity: 0.72;
     @apply pointer-events-none absolute inset-x-0 top-0 h-48;
   }
@@ -258,7 +264,7 @@
   .os-window-titlebar {
     background: var(--chrome-strong);
     border-color: var(--line);
-    @apply sticky top-12 z-30 grid min-h-12 grid-cols-[1fr_auto_1fr] items-center gap-4 border-b px-4 backdrop-blur-xl;
+    @apply sticky top-0 z-30 grid min-h-12 grid-cols-[1fr_auto_1fr] items-center gap-4 border-b px-4 backdrop-blur-xl;
   }
 
   .os-traffic {
@@ -303,10 +309,12 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  --font-heading: "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-sans:
+    "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --font-heading:
+    "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }
 
 html {
