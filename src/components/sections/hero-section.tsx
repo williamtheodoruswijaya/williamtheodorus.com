@@ -56,14 +56,14 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative isolate min-h-[calc(100vh-10rem)] overflow-hidden border-b border-[var(--line)] bg-[var(--surface)] px-5 pb-16 pt-12 transition-colors duration-200 sm:px-6 sm:pt-16 lg:px-8"
+      className="relative isolate min-h-[calc(100vh-10rem)] overflow-hidden border-b border-[var(--line)] bg-[var(--surface)] px-5 pb-16 pt-4 transition-colors duration-200 sm:px-6 sm:pt-8 lg:px-8"
     >
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--grid-line)_1px,transparent_1px),linear-gradient(to_bottom,var(--grid-line)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_82%)]"
       />
 
-      <div className="site-container grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+      <div className="site-container grid items-start gap-14 lg:grid-cols-[1.08fr_0.92fr]">
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ const HeroSection = () => {
           className="max-w-3xl"
         >
           <p className="uip-eyebrow mb-5">Developer portfolio</p>
-          <h1 className="uip-heading text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">
+          <h1 className="uip-heading text-5xl leading-[0.82] sm:text-6xl lg:text-7xl">
             William Theodorus Wijaya
           </h1>
           <p className="uip-copy mt-6 max-w-2xl text-lg leading-8">

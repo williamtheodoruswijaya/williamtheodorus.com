@@ -116,6 +116,20 @@ const PROJECTS: Project[] = [
     ],
     types: ["Software Engineering"],
   },
+    {
+        name: "Orchestra Voice",
+        image: "/projects/9.png",
+        description:
+            "Self-made discord bot that can run 24/7 inside a voice channel. Can play music as well",
+        skills: ["Claude", "Codex", "discordjs"],
+        links: [
+            {
+                name: "Repository",
+                url: "https://github.com/williamtheodoruswijaya/orchestra-voice"
+            }
+        ],
+        types: ["Software Engineering"],
+    }
 ];
 
 export default PROJECTS;
